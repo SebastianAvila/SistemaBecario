@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('programas', function (Blueprint $table) {
             $table->id();
             $table->string('id_UnicoPro',20);
-            $table->string('tipoPogra',30);
+            $table->string('tipoProgra',30);
             $table->string('fechaInicioBeca',30);
             $table->string('fechaFinBeca',30);
             $table->string('clavePlantel',20);

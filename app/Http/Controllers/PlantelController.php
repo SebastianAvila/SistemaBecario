@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Plantel; 
+use DateTime; 
 
 class PlantelController extends Controller
 {
@@ -14,7 +16,8 @@ class PlantelController extends Controller
     public function index()
     {
         //
-        return view('plantel.index');
+        $planteles = Plantel ::All();
+        return view('plantel.index')->with('planteles', $planteles);
 
     }
 
@@ -26,6 +29,7 @@ class PlantelController extends Controller
     public function create()
     {
         //
+        return view('plantel.create'); 
     }
 
     /**
@@ -37,6 +41,16 @@ class PlantelController extends Controller
     public function store(Request $request)
     {
         //
+    
+ 
+
+        $planteles = new Plantel(); 
+        $planteles-> clavePlantel = $request->get('clavePlantel');
+        $planteles -> nombrePlantel = $request->get('nombrePlantel');
+        $planteles -> localidad = $request->get('localidad'); 
+        $planteles -> save();
+
+        return redirect('planteles/create');
     }
 
     /**

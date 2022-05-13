@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alumno;
+use DateTime; 
 
 class AlumnoController extends Controller
 {
@@ -27,6 +28,7 @@ class AlumnoController extends Controller
     public function create()
     {
         //
+        return view('alumno.create');
     }
 
     /**
@@ -38,6 +40,12 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         //
+        $dt = new DateTime();
+        $dt->format('Y-m-d H:i:s');    
+
+        $alumnos = new Alumno(); 
+        $alumnos -> primerNomBeca= $request -> get('primerNomBeca'); 
+        
     }
 
     /**

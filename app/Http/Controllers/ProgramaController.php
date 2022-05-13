@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Programa; 
 class ProgramaController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ProgramaController extends Controller
     public function index()
     {
         //
-        return view('programa.index');
+        $programas = Programa :: All(); 
+        return view('programa.index')->with('programas', $programas);
 
     }
 

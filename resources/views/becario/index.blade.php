@@ -1,4 +1,5 @@
 @include('../layouts/header')
+@include('../layouts/sidebar')
 
 <div class="container">
 
