@@ -27,6 +27,7 @@ class ProgramaController extends Controller
     public function create()
     {
         //
+        return view('programa.create');
     }
 
     /**
@@ -38,6 +39,16 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         //
+        $programas = new Programa(); 
+        $programas -> id_UnicoPro = $request -> get('id_UnicoPro');
+        $programas -> tipoProgra = $request -> get('tipoProgra');
+        $programas -> fechaInicioBeca = $request -> get('fechaInicioBeca');
+        $programas -> fechaFinBeca = $request -> get('fechaFinBeca');
+        $programas -> clavePlantel = $request -> get('clavePlantel');
+        $programas -> horasCubrir = $request -> get('horasCubrir');
+        $programas -> save(); 
+
+        return redirect('programas/create');
     }
 
     /**

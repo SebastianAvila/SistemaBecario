@@ -204,9 +204,9 @@
 
         <div class="collapse show" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ">
-                <li><a href="alumno/create" class="">Registrar Alumnos</a></li>
-                <li><a href="planteles/create" class="">Registrar Escuelas</a></li>
-                <li><a href="#" class="">Regsitrar Programas</a></li>
+                <li><a href="/alumno/create" class="">Registrar Alumnos</a></li>
+                <li><a href="/planteles/create" class="">Registrar Escuelas</a></li>
+                <li><a href="/programas/create" class="">Registrar Programas</a></li>
             </ul>
         </div>
         </li>
