@@ -15,8 +15,9 @@
                 <th>Fecha de inicio</th>
                 <th>Fecha de fin</th>
                 <th>Clave Plantel </th>
-                <th>Fecha de registro </th>
                 <th>Horas a cubrir </th>
+                <th>Fecha de creación</th>
+                <th>Fecha de modificación</th>
                 <th>Acciones</th>
 
             </tr>
@@ -30,12 +31,17 @@
                 <td> {{$programa->fechaInicioBeca}} </td>
                 <td> {{$programa->fechaFinBeca}} </td>
                 <td> {{$programa->clavePlantel}} </td>
-                <td> {{$programa->fechaRegistro}} </td>
                 <td> {{$programa->horasCubrir}} </td>
-                <td>
-                    <a href="" class="btn btn-secondary">Editar</a>
-                    <button class="btn btn-danger"> Eliminar</button>
+                <td>{{$programa->created_at}}</td>
+                <td>{{$programa->updated_at}}</td>
 
+                <td>
+                    <form action="{{route ('programas.destroy',$programa->id) }}" method="post">
+                    <a href="/programas/{{$programa->id}}/edit" class="btn btn-secondary">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button  type="submit" class="btn btn-danger"> Eliminar</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

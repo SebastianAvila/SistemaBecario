@@ -4,8 +4,8 @@
 <div class="container">
 
     <table class=" table table-hover table-responsive">
-        <h2>Alumnos registrados</h2>
-        <p>Desglose de alumnos registrados en la institucion </p>
+        <h2>Programas registrados</h2>
+        <p>Desglose de programas registrados en la institucion </p>
         <thead>
             <tr>
                 <th>ID</th>
@@ -27,9 +27,12 @@
                 <td> {{$plantel->created_at}} </td>
                 <td> {{$plantel-> updated_at}}</td>
                 <td>
-                    <a href="" class="btn btn-secondary">Editar</a>
-                    <button class="btn btn-danger"> Eliminar</button>
-
+                    <form action="{{route ('planteles.destroy', $plantel->id)}}" method="post">
+                    <a href="/planteles/{{$plantel->id}}/edit" class="btn btn-secondary">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger"> Eliminar</button>
+                    </form>
                 </td>
 
             </tr>

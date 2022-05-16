@@ -15,8 +15,8 @@ class BecarioController extends Controller
     public function index()
     {
         //
-        $BecarioCuenta=BecarioCuenta::all();
-        return view('becario.index')->with('becarioCuenta');
+        $becarios=BecarioCuenta::all();
+        return view('becario.index')->with('becarios', $becarios);
 
     }
 
@@ -39,6 +39,16 @@ class BecarioController extends Controller
     public function store(Request $request)
     {
         //
+
+        $becarios = new BecarioCuenta(); 
+        $becarios -> id_UnicoAlum = $request ->get('id_UnicoAlum'); 
+        $becarios -> usuarioBecario= $request ->get('usuarioBecario'); 
+        $becarios -> passwordBecario = $request ->get('passwordBecario'); 
+        $becarios -> horasRestantes = $request ->get('horasRestantes'); 
+        $becarios -> tipo = $request ->get('tipo'); 
+        $becarios -> fechaInicioPresta = $request ->get('fechaInicioPresta'); 
+        $becarios -> fechaFinPresta = $request ->get('fechaFinPresta'); 
+        $becarios -> save();
     }
 
     /**

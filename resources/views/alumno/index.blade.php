@@ -39,9 +39,14 @@
                 <td> {{$alumno->clavePlantel}} </td>
                 <td> {{$alumno->fechaRegistro}} </td>
                 <td>
-                    <a href="" class="btn btn-secondary">Editar</a>
-                    <button class="btn btn-danger"> Eliminar</button>
 
+                <form action="{{route('alumnos.destroy', $alumno->id)}}" method="post">
+
+                </form>
+                    <a href="/alumno/{{$alumno->id}}/edit" class="btn btn-secondary">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger"> Eliminar</button>
                 </td>
 
             </tr>
@@ -52,7 +57,8 @@
         <button type="button" class="btn btn-outline-success btn-lg">Regresar</button>
     </a>
     <a href="alumno/create">
-        <button type="button" class="btn btn-outline-success btn-lg">Crear</button>
+        <button
+         type="button" class="btn btn-outline-success btn-lg">Crear</button>
     </a>
 </div>
 

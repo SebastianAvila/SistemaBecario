@@ -2,12 +2,11 @@
 @include('../layouts/sidebar')
 
 
-
 <div class="container">
 
     <h2>Registro de alumnos </h2>
 
-    <form class="row g-3 needs-validation" novalidate action="/alumnos" method="POST">
+    <!-- <form class="row g-3 needs-validation" novalidate action="/alumnos" method="POST">
         @csrf
 
         <div class="col-md-4 position-relative">
@@ -111,6 +110,67 @@
             <a href="/alumno"><button class="btn btn-danger" type="button">Cancel</button></a>
 
         </div>
+    </form> -->
+
+    <form action="/alumno" action="/becario" method="POST">
+        @csrf
+        <h2>Datos becario</h2>
+
+        <h3>ID personalizado</h3>
+        <input type="text" name="id_UnicoAlum" id="id_UnicoAlum" require>
+        <h3>Primer Nombre</h3>
+        <input type="text" name="primerNomBeca" id="primerNomBeca" placeholder="Obligatorio*">
+
+        <h3>Segundo Nombre</h3>
+        <input type="text" name="segundoNomBeca" id="segundoNomBeca" placeholder="Opcional*">
+
+        <h3>Primer Apellido</h3>
+        <input type="text" name="apellidoPaterBeca" id="apellidoPaterBeca" placeholder="Obligatorio*">
+
+        <h3>Segundo Apellido</h3>
+        <input type="text" name="apellidoMaterBeca" id="apellidoMaterBeca" placeholder="Obligatorio*">
+
+        <h3>Celular a 10 digitos</h3>
+        <input type="text" name="celular" id="celular" placeholder="Lada + 7 numeros restantes">
+
+        <h3>Correo Electronico</h3>
+        <input type="text" name="correoElec" id="correoElec" placeholder="correo@gmail.com">
+
+        <h3>usuario para su login </h3>
+        <input type="text" name="usuarioBecario" id="usuarioBecario" placeholder=" datos+@becario.uady.mx">
+
+        <h3>Password</h3>
+        <input type="password" name="passwordBecario" id="passwordBecario">
+        <br><br>
+
+        <!-- consulta para poder obtener datos de una tabla e imprimirlos en el select  -->
+        <?php
+        $link = mysqli_connect("localHost", "root", "");
+        if ($link) {
+            mysqli_select_db($link, "sistemabecariolaravel");
+        }
+        ?>
+        <h3>Plantel de procedencia</h3>
+
+        <select name="id_UnicoPro" id="id_UnicoPro" require>
+            <option name="id_UnicoPro" id="id_UnicoPro" value="0">Seleccione Uno</option>
+            <option name="id_UnicoPro" id="id_UnicoPro" value="Practicas Profesionales">Practicas Profesionales</option>
+            <option name="id_UnicoPro" id="id_UnicoPro" value="Servicio Social "> Servicio Social</option>
+            <option name="id_UnicoPro" id="id_UnicoPro" value="Residencia "> Residencia</option>
+        </select>
+
+        <select name="clavePlantel" id="" require>
+            <option value="">Planteles Disponibles</option>
+            <?php
+            $v = mysqli_query($link, "SELECT * FROM plantels");
+            while ($planteles  = mysqli_fetch_row($v)) {
+            ?>
+                <option value="<?php echo $planteles[0] ?>"><?php echo $planteles[2] ?> </option>
+            <?php } ?>
+        </select>
+
+        <input type="submit" value="Registrar" name="registraAlumno" class="btn btn-success btn-block">
+
     </form>
 
 </div>

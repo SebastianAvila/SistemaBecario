@@ -73,6 +73,9 @@ class PlantelController extends Controller
     public function edit($id)
     {
         //
+        $plantel = Plantel :: find($id); 
+        return view('plantel.edit')->with('plantel', $plantel); 
+        return redirect('/planteles');
     }
 
     /**
@@ -85,6 +88,14 @@ class PlantelController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $plantel = Plantel:: find($id); 
+        $plantel-> clavePlantel = $request->get('clavePlantel');
+        $plantel -> nombrePlantel = $request->get('nombrePlantel');
+        $plantel -> localidad = $request->get('localidad'); 
+        $plantel -> save();
+
+        return redirect('/planteles');
     }
 
     /**
@@ -96,5 +107,9 @@ class PlantelController extends Controller
     public function destroy($id)
     {
         //
+        $plantel = Plantel :: find($id); 
+        $plantel -> delete(); 
+        return redirect('/planteles');
+
     }
 }
